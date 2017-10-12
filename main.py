@@ -28,7 +28,7 @@ def showblogs():
     blog_id=request.args.get('blog_id')
     if blog_id != None:
         blog_id=int(blog_id)
-    blogs=Blog.query.all()
+    blogs=Blog.query.order_by(Blog.blog_id.desc()).all()
     return render_template('blog.html',blogs=blogs,blog_id=blog_id)
 
 
