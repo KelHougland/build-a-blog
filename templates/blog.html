@@ -2,13 +2,29 @@
 
 {% block content %}
 
-<h2>Share Your Thoughts!</h2>
-<form method = "POST">
+    {% if blog_id|int != 0 %}
 
+        {% for blog in blogs %}
 
+            {% if blog.blog_id==blog_id %}
+    
+                <a href="/blog?blog_id={{blog.blog_id}}"><h3>{{blog.title}}</h3></a>
+                <p>{{blog.blog}}</p>
 
-</form>
+            {% endif %}
+    
+        {% endfor %}
 
+    {% else %}
+
+        {% for blog in blogs %}
+
+            <a href="/blog?blog_id={{blog.blog_id}}"><h3>{{blog.title}}</h3></a>
+            <p>{{blog.blog}}</p>
+
+        {% endfor %}
+
+    {% endif %}
 
 
 
